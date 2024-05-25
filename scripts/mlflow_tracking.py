@@ -5,9 +5,9 @@ import yaml
 from utils import load_config
 
 
-def mlflow_run(parameters, metrics_path, model_path, data_paths):
+def mlflow_run(experiment_name, parameters, metrics_path, model_path, data_paths):
     config = load_config('../config/config.yaml')
-    mlflow.set_experiment(config['mlflow']['experiment_name'])
+    mlflow.set_experiment(experiment_name)
     
     with mlflow.start_run():
         # Log parameters
@@ -30,6 +30,7 @@ def main():
     current_path = os.getcwd()
     config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
+    experiment_name = config['mlflow']['experiment_name']
     parameters = config['model']['parameters']
     paths = config['paths']
     evaluation_output_path = paths['evaluation_output_path']
@@ -40,6 +41,7 @@ def main():
     y_val_path = os.path.join(current_path, paths['data_output_path'], 'y_val.csv')
 
     mlflow_run(
+        experiment_name,
         parameters, 
         evaluation_output_path,
         model_output_path,

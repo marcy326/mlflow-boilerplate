@@ -8,8 +8,8 @@ class Preprocessor:
     def __init__(self, config_path='../config/config.yaml'):
         self.config = load_config(config_path)
         self.path = self.config['paths']
-        project_path = "../"
-        self.output_path = os.path.join(project_path, self.path['data_output_path'])
+        current_path = os.getcwd()
+        self.output_path = os.path.join(current_path, self.path['data_output_path'])
 
     def preprocess_data(self, df):
         df.loc[:, 'Age'] = df['Age'].fillna(df['Age'].median())

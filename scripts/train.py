@@ -9,8 +9,8 @@ class ModelTrainer:
     def __init__(self, config_path='../config/config.yaml'):
         self.config = load_config(config_path)
         self.path = self.config['paths']
-        project_path = "../"
-        self.model_output_path = os.path.join(project_path, self.path['model_output_path'])
+        current_path = os.getcwd()
+        self.model_output_path = os.path.join(current_path, self.path['model_output_path'])
 
     def train_model(self, X_train_path, y_train_path, parameters):
         X_train = pd.read_csv(X_train_path)
