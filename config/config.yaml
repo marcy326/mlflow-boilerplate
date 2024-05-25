@@ -1,0 +1,12 @@
+paths:
+  data_input_path: data/raw/train.csv
+  data_output_path: data/processed
+  model_output_path: model/model.pkl
+  evaluation_output_path: metrics/evaluation_results.yaml
+model:
+  model_name: random_forest
+  parameters:
+    n_estimators: 100
+    max_depth: 5
+mlflow:
+  experiment_name: Titanic

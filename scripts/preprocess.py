@@ -43,7 +43,7 @@ class Preprocessor:
         return X_train_path, X_val_path, y_train_path, y_val_path
 
 def main():
-    current_path = ''
+    current_path = os.getcwd()
     print(current_path)
     config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
