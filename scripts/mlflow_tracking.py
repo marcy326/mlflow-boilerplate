@@ -27,17 +27,17 @@ def mlflow_run(parameters, metrics_path, model_path, data_paths):
             mlflow.log_artifact(path)
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
     parameters = config['model']['parameters']
     paths = config['paths']
     evaluation_output_path = paths['evaluation_output_path']
     model_output_path = paths['model_output_path']
-    X_train_path = os.path.join(project_path, config['data_output_path'], 'X_train.csv')
-    X_val_path = os.path.join(project_path, config['data_output_path'], 'X_val.csv')
-    y_train_path = os.path.join(project_path, config['data_output_path'], 'y_train.csv')
-    y_val_path = os.path.join(project_path, config['data_output_path'], 'y_val.csv')
+    X_train_path = os.path.join(current_path, config['data_output_path'], 'X_train.csv')
+    X_val_path = os.path.join(current_path, config['data_output_path'], 'X_val.csv')
+    y_train_path = os.path.join(current_path, config['data_output_path'], 'y_train.csv')
+    y_val_path = os.path.join(current_path, config['data_output_path'], 'y_val.csv')
 
     mlflow_run(
         parameters, 

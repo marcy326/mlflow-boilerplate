@@ -43,10 +43,10 @@ class Preprocessor:
         return X_train_path, X_val_path, y_train_path, y_val_path
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
-    train_df = pd.read_csv(os.path.join(project_path, config["paths"]["data_input_path"]))
+    train_df = pd.read_csv(os.path.join(current_path, config["paths"]["data_input_path"]))
     preprocessor = Preprocessor(config_path)
     X_train_path, X_val_path, y_train_path, y_val_path = preprocessor.run(train_df)
 

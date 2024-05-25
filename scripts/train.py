@@ -29,11 +29,11 @@ class ModelTrainer:
         return self.model_output_path
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
-    X_train_path = os.path.join(project_path, config['data_output_path'], 'X_train.csv')
-    y_train_path = os.path.join(project_path, config['data_output_path'], 'y_train.csv')
+    X_train_path = os.path.join(current_path, config['data_output_path'], 'X_train.csv')
+    y_train_path = os.path.join(current_path, config['data_output_path'], 'y_train.csv')
     parameters = config['model']['parameters']
     trainer = ModelTrainer(config_path)
     model_output_path = trainer.run(X_train_path, y_train_path, parameters)

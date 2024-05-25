@@ -44,12 +44,12 @@ class ModelEvaluator:
         return self.evaluation_output_path
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
     evaluator = ModelEvaluator(config_path)
-    X_val_path = os.path.join(project_path, config['data_output_path'], 'X_val.csv')
-    y_val_path = os.path.join(project_path, config['data_output_path'], 'y_val.csv')
+    X_val_path = os.path.join(current_path, config['data_output_path'], 'X_val.csv')
+    y_val_path = os.path.join(current_path, config['data_output_path'], 'y_val.csv')
     evaluation_output_path = evaluator.run(X_val_path, y_val_path)
 
 if __name__ == "__main__":
