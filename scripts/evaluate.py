@@ -47,9 +47,10 @@ def main():
     current_path = os.getcwd()
     config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
+    paths = config['paths']
     evaluator = ModelEvaluator(config_path)
-    X_val_path = os.path.join(current_path, config['data_output_path'], 'X_val.csv')
-    y_val_path = os.path.join(current_path, config['data_output_path'], 'y_val.csv')
+    X_val_path = os.path.join(current_path, paths['data_output_path'], 'X_val.csv')
+    y_val_path = os.path.join(current_path, paths['data_output_path'], 'y_val.csv')
     evaluation_output_path = evaluator.run(X_val_path, y_val_path)
 
 if __name__ == "__main__":

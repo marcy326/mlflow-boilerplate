@@ -34,10 +34,10 @@ def main():
     paths = config['paths']
     evaluation_output_path = paths['evaluation_output_path']
     model_output_path = paths['model_output_path']
-    X_train_path = os.path.join(current_path, config['data_output_path'], 'X_train.csv')
-    X_val_path = os.path.join(current_path, config['data_output_path'], 'X_val.csv')
-    y_train_path = os.path.join(current_path, config['data_output_path'], 'y_train.csv')
-    y_val_path = os.path.join(current_path, config['data_output_path'], 'y_val.csv')
+    X_train_path = os.path.join(current_path, paths['data_output_path'], 'X_train.csv')
+    X_val_path = os.path.join(current_path, paths['data_output_path'], 'X_val.csv')
+    y_train_path = os.path.join(current_path, paths['data_output_path'], 'y_train.csv')
+    y_val_path = os.path.join(current_path, paths['data_output_path'], 'y_val.csv')
 
     mlflow_run(
         parameters, 
