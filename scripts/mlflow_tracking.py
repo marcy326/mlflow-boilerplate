@@ -6,7 +6,6 @@ from utils import load_config
 
 
 def mlflow_run(experiment_name, parameters, metrics_path, model_path, data_paths):
-    config = load_config('../config/config.yaml')
     mlflow.set_experiment(experiment_name)
     
     with mlflow.start_run():
