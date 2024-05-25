@@ -2,6 +2,6 @@
 .env
 __pycache__/
 config.yaml
-*.csv
+/data/processed/
 model.pkl
 /metrics/evaluation_results.yaml
