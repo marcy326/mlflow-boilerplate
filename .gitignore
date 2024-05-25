@@ -1,0 +1,7 @@
+.venv/
+.env
+__pycache__/
+config.yaml
+*.csv
+model.pkl
+/metrics/evaluation_results.yaml

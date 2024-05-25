@@ -1,0 +1,6 @@
+numpy
+pandas
+scikit-learn
+click
+mlflow==2.12.2
+python-dotenv
