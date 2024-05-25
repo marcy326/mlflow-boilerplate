@@ -2,7 +2,7 @@ import mlflow
 import joblib
 import os
 import yaml
-from .utils import load_config
+from utils import load_config
 
 
 def mlflow_run(parameters, metrics_path, model_path, data_paths):

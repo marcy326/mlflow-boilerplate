@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import os
-from .utils import load_config
+from utils import load_config
 
 class Preprocessor:
     def __init__(self, config_path='../config/config.yaml'):

@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import joblib
 import os
 import yaml
-from .utils import load_config
+from utils import load_config
 
 class ModelEvaluator:
     def __init__(self, config_path='../config/config.yaml'):

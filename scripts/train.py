@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 import os
-from .utils import load_config
+from utils import load_config
 
 class ModelTrainer:
     def __init__(self, config_path='../config/config.yaml'):
