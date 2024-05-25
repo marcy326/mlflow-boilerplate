@@ -44,6 +44,7 @@ class Preprocessor:
 
 def main():
     current_path = os.getcwd()
+    print(current_path)
     config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
     train_df = pd.read_csv(os.path.join(current_path, config["paths"]["data_input_path"]))
