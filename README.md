@@ -11,6 +11,6 @@ Set up an MLFlow tracking server to log experiments.
 
 1. GitHub Secrets:  
 Set up the following secrets in your GitHub repository settings:
-	- MLFLOW_TRACKING_URI: The URI of your MLFlow tracking server.
-	- Other secrets as required for your workflow.
-
+	•	MLFLOW_TRACKING_URI: The URI of your MLFlow tracking server.
+	•	MLFLOW_TRACKING_USERNAME: Your MLFlow tracking server username (if authentication is required).
+	•	MLFLOW_TRACKING_PASSWORD: Your MLFlow tracking server password (if authentication is required).
