@@ -2,14 +2,14 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 import os
-from .utils import load_config
+from utils import load_config
 
 class Preprocessor:
     def __init__(self, config_path='../config/config.yaml'):
         self.config = load_config(config_path)
         self.path = self.config['paths']
-        project_path = "../"
-        self.output_path = os.path.join(project_path, self.path['data_output_path'])
+        current_path = os.getcwd()
+        self.output_path = os.path.join(current_path, self.path['data_output_path'])
 
     def preprocess_data(self, df):
         df.loc[:, 'Age'] = df['Age'].fillna(df['Age'].median())
@@ -43,10 +43,11 @@ class Preprocessor:
         return X_train_path, X_val_path, y_train_path, y_val_path
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    print(current_path)
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
-    train_df = pd.read_csv(os.path.join(project_path, config["paths"]["data_input_path"]))
+    train_df = pd.read_csv(os.path.join(current_path, config["paths"]["data_input_path"]))
     preprocessor = Preprocessor(config_path)
     X_train_path, X_val_path, y_train_path, y_val_path = preprocessor.run(train_df)
 

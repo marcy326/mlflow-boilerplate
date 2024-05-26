@@ -4,15 +4,15 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import joblib
 import os
 import yaml
-from .utils import load_config
+from utils import load_config
 
 class ModelEvaluator:
     def __init__(self, config_path='../config/config.yaml'):
         self.config = load_config(config_path)
         self.path = self.config['paths']
-        project_path = "../"
-        self.model_output_path = os.path.join(project_path, self.path['model_output_path'])
-        self.evaluation_output_path = os.path.join(project_path, self.path['evaluation_output_path'])
+        current_path = os.getcwd()
+        self.model_output_path = os.path.join(current_path, self.path['model_output_path'])
+        self.evaluation_output_path = os.path.join(current_path, self.path['evaluation_output_path'])
 
     def evaluate_model(self, model, X_val_path, y_val_path):
         X_val = pd.read_csv(X_val_path)
@@ -44,12 +44,13 @@ class ModelEvaluator:
         return self.evaluation_output_path
 
 def main():
-    project_path = '../'
-    config_path = os.path.join(project_path, 'config/config.yaml')
+    current_path = os.getcwd()
+    config_path = os.path.join(current_path, 'config/config.yaml')
     config = load_config(config_path)
+    paths = config['paths']
     evaluator = ModelEvaluator(config_path)
-    X_val_path = os.path.join(project_path, config['data_output_path'], 'X_val.csv')
-    y_val_path = os.path.join(project_path, config['data_output_path'], 'y_val.csv')
+    X_val_path = os.path.join(current_path, paths['data_output_path'], 'X_val.csv')
+    y_val_path = os.path.join(current_path, paths['data_output_path'], 'y_val.csv')
     evaluation_output_path = evaluator.run(X_val_path, y_val_path)
 
 if __name__ == "__main__":
