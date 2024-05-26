@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - experiment/*
+  pull_request:
+    branches:
+      - experiment/*
+  workflow_dispatch:
 
 jobs:
   preprocess_and_train:
@@ -20,10 +24,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Get short commit hash
-        id: vars
-        run: echo "::set-output name=short_sha::$(git rev-parse --short HEAD)"
-      
       - name: Preprocess data
         run: python scripts/preprocess.py
       
@@ -34,7 +34,7 @@ jobs:
         run: python scripts/evaluate.py
       
       - name: Log to MLflow
-        run: python scripts/mlflow_tracking.py --commit-hash ${{ steps.vars.outputs.short_sha }}
+        run: python scripts/mlflow_tracking.py --commit-hash ${{ github.sha }}
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
